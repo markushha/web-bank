@@ -56,5 +56,21 @@ export const cards = [
     date: "01/01",
     color: colors[Math.floor(Math.random() * colors.length)],
     balance: 2350000
+  },
+  {
+    id: "091",
+    name: "Amirkhan Eblan",
+    number: "9992 0000 4654 4545",
+    date: "01/01",
+    color: colors[Math.floor(Math.random() * colors.length)],
+    balance: 100
+  },
+  {
+    id: "664",
+    name: "Alikhan Vzhopekhan",
+    number: "1010 1010 1010 0000",
+    date: "03/01",
+    color: colors[Math.floor(Math.random() * colors.length)],
+    balance: 5
   }
 ]
