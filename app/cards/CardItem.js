@@ -16,8 +16,10 @@ function CardItem({card}) {
                     width={80}
                     height={55}
                 />
-                <div className="text-2xl mt-6">{card.number}</div>
-                <div className="mt-2 opacity-30 text-xs">Current Balance</div>
+                <div className="text-3xl mt-4">{card.number}</div>
+                <div className="mt-1 opacity-30 text-xs">Cardholder</div>
+                <div className="text-2xl">{card.name}</div>
+                <div className="mt-1 opacity-30 text-xs">Current Balance</div>
                 <div className="text-2xl">
                     {accounting.formatMoney(card.balance, {
                         symbol: "KZT",
