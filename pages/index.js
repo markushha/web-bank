@@ -2,11 +2,18 @@ import InfoItem from "../app/components/InfoItem";
 import {Meta} from "../app/utils/Meta";
 import Navbar from "../app/components/Navbar";
 import Carousel from "../app/components/Carousel";
+import {useEffect, useState} from "react";
 
 export default function Home({cards}) {
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+        setToken(localStorage.getItem("token"));
+    }, [])
+    
     return (
         <>
-            <Navbar/>
+            <Navbar token={token}/>
             <Meta title="Главная"/>
             <div className="flex flex-col items-center justify-center min-h-screen py-2">
                 <div className="w-[1000px]">
@@ -103,14 +110,14 @@ export default function Home({cards}) {
     );
 }
 
-export async function getStaticProps() {
-    const res = await fetch("http://localhost:3000/api/cards/");
-    const cards = await res.json();
+// export async function getStaticProps() {
+//     const res = await fetch("http://localhost:3000/api/cards/");
+//     const cards = await res.json();
 
-    return {
-        props: {
-            cards,
-        },
-        revalidate: 10,
-    };
-}
+//     return {
+//         props: {
+//             cards,
+//         },
+//         revalidate: 10,
+//     };
+// }
