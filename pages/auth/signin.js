@@ -11,6 +11,13 @@ function signin() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const clearForm = () => {
+    setForm({
+      username: "",
+      password: "",
+    });
+  }
+
   const changeHandler = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -21,17 +28,28 @@ function signin() {
     try {
       setLoading(true);
       setError("");
+
+      if (!username.trim() || !password.trim()) {
+        setLoading(false);
+        setError("Please fill all the fields");
+        clearForm();
+        return;
+      }
+
       const response = await client.post("/auth/login", {
         username,
         password,
       });
-      console.log(JSON.stringify(response.data));
+
+      console.log('1');
+
       localStorage.setItem("token", response.data.token);
       window.location.replace("/");
       setLoading(false);
     } catch (err) {
       setLoading(false);
-      setError(err.message);
+      setError(err.response.data.message);
+      clearForm();
     }
   };
 
@@ -42,8 +60,8 @@ function signin() {
         <div className="container mx-auto">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
-              <div className="relative mx-auto max-w-[525px] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]">
-                <label className="text-2xl font-semibold">Kaspi.kz</label>
+              <div className="relative mt-[7%] mx-auto max-w-[32.813rem] overflow-hidden rounded-lg bg-white py-16 px-10 text-center sm:px-12 md:px-[60px]">
+                <label className="text-2xl font-semibold">Sign In</label>
                 <div className="mt-6">
                   <div className="mb-6">
                     <input

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { handleLogout } from "../hooks/authHook";
+import { handleLogout } from "../hooks/logout.hook";
 
 export default function Navbar({ token }) {
   return (
